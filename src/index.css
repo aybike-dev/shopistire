@@ -1,0 +1,68 @@
+:root {
+  /* Shopistire Renk Paleti */
+  --color-red: #e94d42;
+  --color-orange: #f28b42;
+  --color-blue: #197ccf;
+
+  /* Light Mode */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --border-color: #e0e0e0;
+
+  /* Button Colors */
+  --btn-primary: var(--color-blue);
+  --btn-primary-hover: #1a5f98;
+  --btn-secondary: var(--color-orange);
+  --btn-secondary-hover: #c04d3a;
+  --btn-danger: var(--color-red);
+  --btn-danger-hover: #55221a;
+}
+
+[data-theme="dark"] {
+  /* Dark Mode */
+  --bg-primary: #121212;
+  --bg-secondary: #1E1E1E;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --border-color: #333333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
