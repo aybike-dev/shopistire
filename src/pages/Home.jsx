@@ -34,8 +34,51 @@ const Home = () => {
   return (
     <div className="home-container">
       <div className="home-header">
-        <h1>Hoş geldin, {user ? user.firstName : 'Misafir'}!</h1>
-        <p>En iyi ürünleri keşfedin</p>
+        <div className="promo-banner">
+          <div className="promo-content">
+            <div className="promo-badge">
+              <span className="discount-percent">%50</span>
+              <span className="discount-text">İNDİRİM</span>
+            </div>
+            
+            <div className="promo-main">
+              <h1>
+                Hoş geldin, {user ? user.firstName : 'Misafir'}! 
+                <span className="highlight">Mega İndirim Başladı!</span>
+              </h1>
+              <p>Binlerce üründe dev indirimler! Sepete ekle, kazanmaya başla.</p>
+              
+              <div className="promo-features">
+                <div className="promo-item">
+                  <span className="promo-icon">🚚</span>
+                  <span>Ücretsiz Kargo</span>
+                </div>
+                <div className="promo-item">
+                  <span className="promo-icon">⚡</span>
+                  <span>Aynı Gün Teslimat</span>
+                </div>
+                <div className="promo-item">
+                  <span className="promo-icon">🎁</span>
+                  <span>Hediye Paketi</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="promo-cta">
+              <button className="shop-now-btn">
+                Alışverişe Başla
+              </button>
+              <div className="countdown">
+                <span className="countdown-text">Kampanya bitimine:</span>
+                <div className="countdown-timer">
+                  <span>2 Gün</span>
+                  <span>14 Saat</span>
+                  <span>23 Dakika</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       
       <div className="filters-section">

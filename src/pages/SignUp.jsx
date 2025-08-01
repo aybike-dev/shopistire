@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { registerUser, clearError } from '../store/actions/userActions'
+import WelcomeCard from '../components/WelcomeCard'
 import logo from '../assets/logo.png'
 import './SignUp.css'
 
@@ -99,10 +100,15 @@ const SignUp = () => {
   
   return (
     <div className="signup-container">
-      <div className="signup-card">
-        <div className="signup-header">
-          <img src={logo} alt="Shopistire" className="signup-logo" />
-          <h2>Kayıt Ol</h2>
+      <div className="signup-layout">
+        <div className="signup-welcome">
+          <WelcomeCard isSignUp={true} />
+        </div>
+        <div className="signup-form-section">
+          <div className="signup-card">
+            <div className="signup-header">
+              <img src={logo} alt="Shopistire" className="signup-logo" />
+              <h2>Kayıt Ol</h2>
         </div>
         
         {error && <div className="error-message">{error}</div>}
@@ -207,6 +213,8 @@ const SignUp = () => {
           <p>
             Zaten hesabınız var mı? <Link to="/signin">Giriş Yap</Link>
           </p>
+        </div>
+          </div>
         </div>
       </div>
     </div>

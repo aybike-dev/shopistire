@@ -17,7 +17,7 @@
   --btn-secondary: var(--color-orange);
   --btn-secondary-hover: #c04d3a;
   --btn-danger: var(--color-red);
-  --btn-danger-hover: #55221a;
+  --btn-danger-hover: #b81c04;
 }
 
 [data-theme="dark"] {

@@ -1,0 +1,162 @@
+.welcome-card {
+    background: linear-gradient(135deg, var(--color-red), var(--color-orange));
+    padding: 2rem;
+    border-radius: 1rem;
+    color: white;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 500px;
+}
+
+.welcome-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.welcome-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 400px;
+}
+
+.welcome-header {
+    margin-bottom: 2rem;
+}
+
+.welcome-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    filter: brightness(0) invert(1);
+}
+
+.welcome-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-body {
+    margin-bottom: 2rem;
+}
+
+.welcome-body h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.welcome-body p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    opacity: 0.95;
+}
+
+.welcome-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.welcome-features li {
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.welcome-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 1.5rem;
+}
+
+.welcome-stats {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin-top: 0.25rem;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .welcome-card {
+    background: linear-gradient(135deg,
+            color-mix(in srgb, var(--color-red) 80%, black),
+            color-mix(in srgb, var(--color-orange) 80%, black));
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .welcome-card {
+        padding: 1.5rem;
+        min-height: 400px;
+    }
+
+    .welcome-title {
+        font-size: 1.5rem;
+    }
+
+    .welcome-body h2 {
+        font-size: 1.25rem;
+    }
+
+    .welcome-body p {
+        font-size: 0.9rem;
+    }
+
+    .welcome-features li {
+        font-size: 0.85rem;
+    }
+
+    .welcome-stats {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .stat {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .stat-number {
+        font-size: 1rem;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+    }
+}

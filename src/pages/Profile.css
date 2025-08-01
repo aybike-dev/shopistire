@@ -10,12 +10,13 @@
 }
 
 .profile-card {
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
     border-radius: 16px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 600px;
     overflow: hidden;
+    border: 1px solid var(--border-color);
 }
 
 .profile-header {
@@ -57,10 +58,10 @@
 
 .profile-section h3 {
     margin: 0 0 25px 0;
-    color: #333;
+    color: var(--text-primary);
     font-size: 20px;
     font-weight: 600;
-    border-bottom: 2px solid #f0f0f0;
+    border-bottom: 2px solid var(--border-color);
     padding-bottom: 10px;
 }
 
@@ -78,30 +79,38 @@
 
 .info-group label {
     font-weight: 600;
-    color: #555;
+    color: var(--text-secondary);
     font-size: 14px;
 }
 
 .info-group span {
     padding: 12px;
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     border-radius: 8px;
-    border: 2px solid transparent;
+    border: 2px solid var(--border-color);
     font-size: 16px;
+    color: var(--text-primary);
 }
 
 .info-group input {
     padding: 12px;
-    border: 2px solid #e1e1e1;
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     font-size: 16px;
-    transition: border-color 0.3s ease;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.info-group input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
 }
 
 .info-group input:focus {
     outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: var(--btn-primary);
+    box-shadow: 0 0 0 3px rgba(235, 77, 66, 0.1);
 }
 
 .role-badge {
@@ -114,13 +123,15 @@
 }
 
 .role-badge.admin {
-    background: #e3f2fd;
-    color: #1976d2;
+    background: color-mix(in srgb, var(--color-blue) 20%, var(--bg-primary));
+    color: var(--color-blue);
+    border: 1px solid var(--color-blue);
 }
 
 .role-badge.user {
-    background: #f3e5f5;
-    color: #7b1fa2;
+    background: color-mix(in srgb, var(--color-orange) 20%, var(--bg-primary));
+    color: var(--color-orange);
+    border: 1px solid var(--color-orange);
 }
 
 .profile-actions {
@@ -151,29 +162,31 @@
 
 .edit-btn:hover,
 .save-btn:hover {
+    background: var(--btn-primary-hover);
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 8px 25px rgba(235, 77, 66, 0.3);
 }
 
 .cancel-btn {
-    background: #6c757d;
-    color: white;
+    background: var(--text-secondary);
+    color: var(--bg-primary);
     border: none;
     padding: 12px 24px;
     border-radius: 8px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
     flex: 1;
 }
 
 .cancel-btn:hover {
-    background: #5a6268;
+    background: color-mix(in srgb, var(--text-secondary) 80%, black);
+    transform: translateY(-1px);
 }
 
 .logout-btn {
-    background: #dc3545;
+    background: var(--btn-danger);
     color: white;
     border: none;
     padding: 12px 24px;
@@ -181,11 +194,12 @@
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .logout-btn:hover {
-    background: #c82333;
+    background: var(--btn-danger-hover);
+    transform: translateY(-1px);
 }
 
 @media (max-width: 768px) {
@@ -204,4 +218,26 @@
     .edit-actions {
         flex-direction: column;
     }
+}
+
+/* Dark mode specific adjustments */
+[data-theme="dark"] .profile-card {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* 
+[data-theme="dark"] .profile-header {
+    background: linear-gradient(135deg, var(--color-red), var(--color-orange));
+} */
+
+[data-theme="dark"] .info-group span {
+    background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .role-badge.admin {
+    background: color-mix(in srgb, var(--color-blue) 30%, var(--bg-primary));
+}
+
+[data-theme="dark"] .role-badge.user {
+    background: color-mix(in srgb, var(--color-orange) 30%, var(--bg-primary));
 }

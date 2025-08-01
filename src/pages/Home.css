@@ -10,22 +10,172 @@
 .home-header {
     text-align: center;
     margin-bottom: 40px;
-    padding: 40px 20px;
-    background: var(--bg-primary);
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
 }
 
-.home-header h1 {
-    font-size: 36px;
-    margin: 0 0 10px 0;
+.promo-banner {
+    background: linear-gradient(135deg, var(--color-red), var(--color-orange), var(--color-blue));
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.promo-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="20" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="20" cy="80" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="1.2" fill="rgba(255,255,255,0.1)"/></svg>');
+    pointer-events: none;
+}
+
+.promo-content {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.promo-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    justify-content: center;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.discount-percent {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1;
+}
+
+.discount-text {
+    font-size: 0.9rem;
     font-weight: 700;
+    color: white;
+    letter-spacing: 2px;
 }
 
-.home-header p {
-    font-size: 18px;
-    margin: 0;
+.promo-main {
+    text-align: left;
+}
+
+.promo-main h1 {
+    font-size: 2.5rem;
+    margin: 0 0 1rem 0;
+    font-weight: 800;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1.2;
+}
+
+.highlight {
+    display: block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.2rem 1rem;
+    border-radius: 25px;
+    margin-top: 0.5rem;
+    font-size: 1.8rem;
+}
+
+.promo-main p {
+    font-size: 1.1rem;
+    margin: 0 0 1.5rem 0;
+    color: white;
+    opacity: 0.95;
+    font-weight: 500;
+}
+
+.promo-features {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.promo-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.promo-icon {
+    font-size: 1.2rem;
+}
+
+.promo-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.shop-now-btn {
+    background: white;
+    color: var(--color-red);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.shop-now-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+    background: #f8f8f8;
+}
+
+.countdown {
+    text-align: center;
+}
+
+.countdown-text {
+    display: block;
+    color: white;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
     opacity: 0.9;
+}
+
+.countdown-timer {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.countdown-timer span {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .filters-section {
@@ -108,17 +258,62 @@
     font-size: 16px;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
     .home-container {
         padding: 15px;
     }
 
-    .home-header {
-        padding: 30px 15px;
+    .promo-banner {
+        padding: 25px 20px;
     }
 
-    .home-header h1 {
-        font-size: 28px;
+    .promo-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .promo-badge {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+    }
+
+    .discount-percent {
+        font-size: 2rem;
+    }
+
+    .promo-main {
+        text-align: center;
+    }
+
+    .promo-main h1 {
+        font-size: 1.8rem;
+    }
+
+    .highlight {
+        font-size: 1.4rem;
+        margin-top: 0.3rem;
+    }
+
+    .promo-features {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .promo-item {
+        font-size: 0.8rem;
+    }
+
+    .shop-now-btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+
+    .countdown-timer {
+        justify-content: center;
     }
 
     .filters-section {
@@ -138,5 +333,39 @@
     .products-grid {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .promo-banner {
+        padding: 20px 15px;
+        border-radius: 15px;
+    }
+
+    .promo-main h1 {
+        font-size: 1.5rem;
+    }
+
+    .highlight {
+        font-size: 1.2rem;
+    }
+
+    .promo-main p {
+        font-size: 1rem;
+    }
+
+    .promo-features {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .shop-now-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .countdown-timer span {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.4rem;
     }
 }
