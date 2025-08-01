@@ -120,19 +120,32 @@
     border: 1px solid var(--border-color);
 }
 
-.logout-btn {
-    background-color: var(--bg-primary);
-    color: white;
-    border: none;
+.btn-logout {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--bg-primary);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* .logout-btn {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
     padding: 8px 16px;
     border-radius: 6px;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-}
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+} */
 
-.logout-btn:hover {
+.btn-logout:hover {
     background-color: var(--btn-danger-hover);
+    color: white;
+    border-color: var(--btn-danger-hover);
 }
 
 @media (max-width: 768px) {

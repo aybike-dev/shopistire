@@ -37,7 +37,7 @@ const ProductCard = ({ product }) => {
         
         <div className="product-footer">
           <div className="product-price">
-            <span className="price">${product.price}</span>
+            <span className="price">₺{product.price}</span>
             <span className="stock">Stok: {product.stock}</span>
           </div>
           

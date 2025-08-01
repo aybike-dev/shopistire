@@ -3,6 +3,8 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { logout } from '../store/actions/userActions'
 import logo from '../assets/logo.png'
 import './Navbar.css'
+import { FaMoon, FaSun } from 'react-icons/fa'
+import { AiOutlineSun } from 'react-icons/ai'
 
 const Navbar = ({ isDarkMode, toggleDarkMode }) => {
   const { user, isAuthenticated } = useSelector(state => state.auth)
@@ -27,9 +29,6 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
         </Link>
         
         <div className="navbar-menu">
-          <button className="theme-toggle" onClick={toggleDarkMode}>
-            {isDarkMode ? '☀️' : '🌙'}
-          </button>
           {isAuthenticated ? (
             <>
               <Link 
@@ -48,9 +47,10 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                 <span className="user-greeting">
                   Merhaba, {user?.firstName}
                 </span>
-                <button className="logout-btn" onClick={handleLogout}>
+                <button className="btn-logout" onClick={handleLogout}>Çıkış</button>
+                {/* <button className="logout-btn" onClick={handleLogout}>
                   Çıkış
-                </button>
+                </button> */}
               </div>
             </>
           ) : (
@@ -69,6 +69,11 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
               </Link>
             </div>
           )}
+          <button className="theme-toggle" onClick={toggleDarkMode}>
+            {isDarkMode ? 
+            <AiOutlineSun></AiOutlineSun>
+            : <FaMoon></FaMoon>}
+          </button>
         </div>
       </div>
     </nav>

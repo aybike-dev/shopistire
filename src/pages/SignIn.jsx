@@ -93,12 +93,6 @@ const SignIn = () => {
             Hesabınız yok mu? <Link to="/signup">Kayıt Ol</Link>
           </p>
         </div>
-        
-        <div className="demo-credentials">
-          <h4>Demo Hesaplar:</h4>
-          <p><strong>Admin:</strong> admin / 123456</p>
-          <p><strong>User:</strong> johndoe / 123456</p>
-        </div>
       </div>
     </div>
   )
