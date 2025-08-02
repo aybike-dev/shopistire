@@ -21,6 +21,7 @@ const initialState = {
   isAuthenticated: false,
   loading: false,
   error: null,
+  userType: null, // 'customer', 'seller'
 
   // Users management state
   users: [],
@@ -45,7 +46,8 @@ const userReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         isAuthenticated: true,
-        user: action.payload,
+        user: action.payload.user,
+        userType: action.payload.userType,
         error: null,
       };
 
@@ -64,6 +66,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         user: null,
         isAuthenticated: false,
+        userType: null,
         error: null,
       };
 

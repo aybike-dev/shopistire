@@ -117,6 +117,37 @@
     color: #388e3c;
 }
 
+.category-badge.sports {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.seller-info {
+    margin-top: 12px;
+    padding: 8px 12px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.seller-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.seller-name {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.seller-rating {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
 .product-footer {
     margin-top: auto;
 }

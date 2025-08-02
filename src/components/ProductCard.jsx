@@ -1,6 +1,9 @@
 import './ProductCard.css'
+import { mockSellers } from '../mockData/sellers'
 
 const ProductCard = ({ product }) => {
+  const seller = mockSellers.find(s => s.id === product.sellerId)
+  
   const handleAddToCart = () => {
     // In a real app, this would dispatch an action to add to cart
     alert(`${product.name} sepete eklendi! (Demo amaçlı)`)
@@ -34,10 +37,21 @@ const ProductCard = ({ product }) => {
             </span>
           </div>
         </div>
+
+        {seller && (
+          <div className="seller-info">
+            <div className="seller-details">
+              <span className="seller-name">🏪 {seller.name}</span>
+              <span className="seller-rating">
+                ⭐ {seller.rating}
+              </span>
+            </div>
+          </div>
+        )}
         
         <div className="product-footer">
           <div className="product-price">
-            <span className="price">₺{product.price}</span>
+            <span className="price">{product.price}</span>
             <span className="stock">Stok: {product.stock}</span>
           </div>
           

@@ -11,6 +11,7 @@ const SignIn = () => {
     username: '',
     password: ''
   })
+  const [userType, setUserType] = useState('customer') // 'customer' or 'seller'
   
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -39,7 +40,7 @@ const SignIn = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (formData.username && formData.password) {
-      dispatch(loginUser(formData))
+      dispatch(loginUser(formData, userType))
     }
   }
   
@@ -57,8 +58,34 @@ const SignIn = () => {
             </div>
             
             {error && <div className="error-message">{error}</div>}
-            
+                        
             <form onSubmit={handleSubmit} className="signin-form">
+              <div className="form-group">
+                <label>Giriş Türü</label>
+                <div className="user-type-selector">
+                  <label className="radio-option">
+                    <input
+                      type="radio"
+                      name="userType"
+                      value="customer"
+                      checked={userType === 'customer'}
+                      onChange={(e) => setUserType(e.target.value)}
+                    />
+                    <span>Müşteri</span>
+                  </label>
+                  <label className="radio-option">
+                    <input
+                      type="radio"
+                      name="userType"
+                      value="seller"
+                      checked={userType === 'seller'}
+                      onChange={(e) => setUserType(e.target.value)}
+                    />
+                    <span>Satıcı</span>
+                  </label>
+                </div>
+              </div>
+
               <div className="form-group">
                 <label htmlFor="username">Kullanıcı Adı veya Email</label>
                 <input

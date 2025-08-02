@@ -11,15 +11,16 @@ import {
 
 // Import mock data
 import { mockUsers } from "../../mockData/users";
+import { mockSellers } from "../../mockData/sellers";
 
 // Action Creators
 export const loginStart = () => ({
   type: AUTH_LOGIN_START,
 });
 
-export const loginSuccess = (user) => ({
+export const loginSuccess = (data) => ({
   type: AUTH_LOGIN_SUCCESS,
-  payload: user,
+  payload: data,
 });
 
 export const loginFailure = (error) => ({
@@ -31,9 +32,9 @@ export const registerStart = () => ({
   type: AUTH_REGISTER_START,
 });
 
-export const registerSuccess = (user) => ({
+export const registerSuccess = (data) => ({
   type: AUTH_REGISTER_SUCCESS,
-  payload: user,
+  payload: data,
 });
 
 export const registerFailure = (error) => ({
@@ -50,26 +51,62 @@ export const clearError = () => ({
 });
 
 // Async Actions (Thunks)
-export const loginUser = (credentials) => (dispatch) => {
-  dispatch(loginStart());
+export const loginUser =
+  (credentials, userType = "customer") =>
+  (dispatch) => {
+    dispatch(loginStart());
 
-  // Simulate API call
-  setTimeout(() => {
-    const user = mockUsers.find(
-      (u) =>
-        (u.username === credentials.username ||
-          u.email === credentials.username) &&
-        u.password === credentials.password
-    );
+    // Simulate API call
+    setTimeout(() => {
+      let user = null;
+      let foundUserType = null;
 
-    if (user) {
-      const { password, ...userWithoutPassword } = user;
-      dispatch(loginSuccess(userWithoutPassword));
-    } else {
-      dispatch(loginFailure("Kullanıcı adı veya şifre hatalı"));
-    }
-  }, 1000);
-};
+      if (userType === "customer") {
+        // Check in customer users
+        user = mockUsers.find(
+          (u) =>
+            (u.username === credentials.username ||
+              u.email === credentials.username) &&
+            u.password === credentials.password
+        );
+        if (user) {
+          foundUserType = "customer";
+        }
+      } else if (userType === "seller") {
+        // Check in sellers
+        const seller = mockSellers.find(
+          (s) =>
+            (s.credentials.username === credentials.username ||
+              s.credentials.email === credentials.username) &&
+            s.credentials.password === credentials.password
+        );
+        if (seller) {
+          user = {
+            id: seller.id,
+            username: seller.credentials.username,
+            email: seller.credentials.email,
+            firstName: seller.name,
+            lastName: "",
+            role: "seller",
+            sellerInfo: seller,
+          };
+          foundUserType = "seller";
+        }
+      }
+
+      if (user) {
+        const { password, ...userWithoutPassword } = user;
+        dispatch(
+          loginSuccess({
+            user: userWithoutPassword,
+            userType: foundUserType,
+          })
+        );
+      } else {
+        dispatch(loginFailure("Kullanıcı adı veya şifre hatalı"));
+      }
+    }, 1000);
+  };
 
 export const registerUser = (userData) => (dispatch) => {
   dispatch(registerStart());

@@ -7,7 +7,7 @@ import { FaMoon, FaSun } from 'react-icons/fa'
 import { AiOutlineSun } from 'react-icons/ai'
 
 const Navbar = ({ isDarkMode, toggleDarkMode }) => {
-  const { user, isAuthenticated } = useSelector(state => state.auth)
+  const { user, isAuthenticated, userType } = useSelector(state => state.auth)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const location = useLocation()
@@ -37,15 +37,27 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
               >
                 Ana Sayfa
               </Link>
-              <Link 
-                to="/profile" 
-                className={`navbar-link ${location.pathname === '/profile' ? 'active' : ''}`}
-              >
-                Profil
-              </Link>
+              {userType === 'seller' ? (
+                <Link 
+                  to="/seller" 
+                  className={`navbar-link ${location.pathname === '/seller' ? 'active' : ''}`}
+                >
+                  Satıcı Paneli
+                </Link>
+              ) : (
+                <Link 
+                  to="/profile" 
+                  className={`navbar-link ${location.pathname === '/profile' ? 'active' : ''}`}
+                >
+                  Profil
+                </Link>
+              )}
               <div className="navbar-user">
                 <span className="user-greeting">
-                  Merhaba, {user?.firstName}
+                  {userType === 'seller' ? 
+                    `Merhaba, ${user?.firstName} (Satıcı)` : 
+                    `Merhaba, ${user?.firstName}`
+                  }
                 </span>
                 <button className="btn-logout" onClick={handleLogout}>Çıkış</button>
                 {/* <button className="logout-btn" onClick={handleLogout}>

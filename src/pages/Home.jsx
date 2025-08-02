@@ -10,7 +10,7 @@ import './Home.css'
 const Home = () => {
   const dispatch = useDispatch()
   const { filteredProducts, loading, selectedCategory, searchQuery } = useSelector(state => state.products)
-  const { user } = useSelector(state => state.auth)
+  const { user, userType } = useSelector(state => state.auth)
   
   // Get categories from mock data
   const categories = productCategories
@@ -43,8 +43,25 @@ const Home = () => {
             
             <div className="promo-main">
               <h1>
-                Hoş geldin, {user ? user.firstName : 'Misafir'}! 
-                <span className="highlight">Mega İndirim Başladı!</span>
+                {user ? (
+                  <>
+                    {userType === 'seller' ? 
+                      `Hoş geldin, ${user.firstName}! Satıcı Paneline Hoş Geldin!` :
+                      `Hoş geldin, ${user.firstName}!`
+                    }
+                    <span className="highlight">
+                      {userType === 'seller' ? 
+                        ' Ürünlerini Yönet!' : 
+                        ' Mega İndirim Başladı!'
+                      }
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    Hoş Geldiniz!
+                    <span className="highlight">Mega İndirim Başladı!</span>
+                  </>
+                )}
               </h1>
               <p>Binlerce üründe dev indirimler! Sepete ekle, kazanmaya başla.</p>
               

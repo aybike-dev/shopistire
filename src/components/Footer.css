@@ -1,0 +1,234 @@
+.footer {
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+    width: 100%;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 3rem 0 2rem;
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Logo ve Açıklama */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.footer-logo-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.footer-logo h3 {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.footer-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--bg-secondary);
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.footer-social a:hover {
+    background: var(--btn-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Başlıklar */
+.footer-section h4 {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--btn-primary);
+    padding-bottom: 0.5rem;
+    width: fit-content;
+}
+
+/* Linkler */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-links li a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 0;
+}
+
+.footer-links li a:hover {
+    color: var(--btn-primary);
+    padding-left: 0.5rem;
+}
+
+/* İletişim */
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.contact-icon {
+    font-size: 1.1rem;
+    width: 24px;
+    text-align: center;
+}
+
+/* Alt Bilgi */
+.footer-bottom {
+    border-top: 1px solid var(--border-color);
+    padding: 1.5rem 0;
+}
+
+.footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-copyright p {
+    color: var(--text-secondary);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.footer-legal {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-legal a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+    color: var(--btn-primary);
+}
+
+/* Dark Mode Uyumluluğu */
+[data-theme="dark"] .footer-social a {
+    background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .footer-social a:hover {
+    background: var(--btn-primary);
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem 0 1.5rem;
+    }
+
+    .footer-section {
+        text-align: center;
+        align-items: center;
+    }
+
+    .footer-section h4 {
+        margin: 0 auto 1rem;
+    }
+
+    .footer-links {
+        align-items: center;
+    }
+
+    .footer-links li a:hover {
+        padding-left: 0;
+    }
+
+    .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .footer-legal {
+        justify-content: center;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-container {
+        padding: 0 15px;
+    }
+
+    .footer-content {
+        padding: 1.5rem 0 1rem;
+    }
+
+    .footer-legal {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
