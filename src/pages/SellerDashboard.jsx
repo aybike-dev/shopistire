@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { mockProducts } from '../mockData/products'
+import Button from '../components/Button'
 import { FaPlus, FaEdit, FaTrash, FaEye, FaStar, FaBox, FaTruck } from 'react-icons/fa'
 import './SellerDashboard.css'
 
@@ -180,18 +181,20 @@ const SellerDashboard = () => {
 
       {/* Navigation Tabs */}
       <div className="dashboard-tabs">
-        <button 
-          className={`tab-button ${activeTab === 'products' ? 'active' : ''}`}
+        <Button 
+          variant="tab"
+          className={activeTab === 'products' ? 'btn--active' : ''}
           onClick={() => setActiveTab('products')}
         >
           Ürünlerim
-        </button>
-        <button 
-          className={`tab-button ${activeTab === 'profile' ? 'active' : ''}`}
+        </Button>
+        <Button 
+          variant="tab"
+          className={activeTab === 'profile' ? 'btn--active' : ''}
           onClick={() => setActiveTab('profile')}
         >
           Mağaza Bilgileri
-        </button>
+        </Button>
       </div>
 
       {/* Products Tab */}
@@ -199,12 +202,12 @@ const SellerDashboard = () => {
         <div className="products-section">
           <div className="section-header">
             <h2>Ürünlerim ({totalProducts})</h2>
-            <button 
-              className="btn-primary"
+            <Button 
+              variant="primary"
               onClick={() => setShowAddForm(true)}
             >
               <FaPlus /> Yeni Ürün Ekle
-            </button>
+            </Button>
           </div>
 
           {/* Add/Edit Product Form */}
@@ -294,12 +297,19 @@ const SellerDashboard = () => {
                   </div>
                   
                   <div className="form-actions">
-                    <button type="button" className="btn-secondary" onClick={resetForm}>
+                    <Button 
+                      type="button" 
+                      variant="secondary" 
+                      onClick={resetForm}
+                    >
                       İptal
-                    </button>
-                    <button type="submit" className="btn-primary">
+                    </Button>
+                    <Button 
+                      type="submit" 
+                      variant="primary"
+                    >
                       {editingProduct ? 'Güncelle' : 'Ekle'}
-                    </button>
+                    </Button>
                   </div>
                 </form>
               </div>
@@ -313,7 +323,12 @@ const SellerDashboard = () => {
               <div className="product-detail-modal">
                 <div className="modal-header">
                   <h3>Ürün Detayları</h3>
-                  <button className="close-btn" onClick={closeViewModal}>×</button>
+                  <Button 
+                    variant="close" 
+                    onClick={closeViewModal}
+                  >
+                    ×
+                  </Button>
                 </div>
                 
                 <div className="product-detail-content">
@@ -363,24 +378,24 @@ const SellerDashboard = () => {
                     </div>
                     
                     <div className="detail-actions">
-                      <button 
-                        className="btn-secondary"
+                      <Button 
+                        variant="secondary"
                         onClick={() => {
                           closeViewModal()
                           handleEdit(viewingProduct)
                         }}
                       >
                         <FaEdit /> Düzenle
-                      </button>
-                      <button 
-                        className="btn-danger"
+                      </Button>
+                      <Button 
+                        variant="danger"
                         onClick={() => {
                           closeViewModal()
                           handleDelete(viewingProduct.id)
                         }}
                       >
                         <FaTrash /> Sil
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -402,27 +417,30 @@ const SellerDashboard = () => {
                   <div className="product-image">
                     <img src={product.image} alt={product.name} />
                     <div className="product-actions">
-                      <button 
-                        className="action-btn view"
+                      <Button 
+                        variant="action"
+                        className="btn--view"
                         onClick={() => handleView(product)}
                         title="Görüntüle"
                       >
                         <FaEye />
-                      </button>
-                      <button 
-                        className="action-btn edit"
+                      </Button>
+                      <Button 
+                        variant="action"
+                        className="btn--edit"
                         onClick={() => handleEdit(product)}
                         title="Düzenle"
                       >
                         <FaEdit />
-                      </button>
-                      <button 
-                        className="action-btn delete"
+                      </Button>
+                      <Button 
+                        variant="action"
+                        className="btn--delete"
                         onClick={() => handleDelete(product.id)}
                         title="Sil"
                       >
                         <FaTrash />
-                      </button>
+                      </Button>
                     </div>
                   </div>
                   

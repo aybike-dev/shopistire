@@ -5,6 +5,7 @@ import { productCategories } from '../mockData/products'
 import ProductCard from '../components/ProductCard'
 import SearchBar from '../components/SearchBar'
 import CategoryFilter from '../components/CategoryFilter'
+import Button from '../components/Button'
 import './Home.css'
 
 const Home = () => {
@@ -82,9 +83,13 @@ const Home = () => {
             </div>
             
             <div className="promo-cta">
-              <button className="shop-now-btn">
+              <Button 
+                variant="primary" 
+                size="large"
+                className="shop-now-btn"
+              >
                 Alışverişe Başla
-              </button>
+              </Button>
               <div className="countdown">
                 <span className="countdown-text">Kampanya bitimine:</span>
                 <div className="countdown-timer">
@@ -112,9 +117,14 @@ const Home = () => {
         <div className="products-header">
           <h2>Ürünler ({filteredProducts.length})</h2>
           {(selectedCategory !== 'All' || searchQuery) && (
-            <button className="clear-filters-btn" onClick={handleClearFilters}>
+            <Button 
+              variant="secondary" 
+              size="medium"
+              onClick={handleClearFilters}
+              className="clear-filters-btn"
+            >
               Filtreleri Temizle
-            </button>
+            </Button>
           )}
         </div>
         
@@ -130,9 +140,14 @@ const Home = () => {
           <div className="no-products">
             <h3>Ürün bulunamadı</h3>
             <p>Arama kriterlerinizi değiştirerek tekrar deneyin.</p>
-            <button className="clear-filters-btn" onClick={handleClearFilters}>
+            <Button 
+              variant="primary" 
+              size="medium"
+              onClick={handleClearFilters}
+              className="clear-filters-btn"
+            >
               Tüm Ürünleri Göster
-            </button>
+            </Button>
           </div>
         )}
       </div>

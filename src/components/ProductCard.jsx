@@ -1,4 +1,5 @@
 import './ProductCard.css'
+import Button from './Button'
 import { mockSellers } from '../mockData/sellers'
 
 const ProductCard = ({ product }) => {
@@ -55,13 +56,15 @@ const ProductCard = ({ product }) => {
             <span className="stock">Stok: {product.stock}</span>
           </div>
           
-          <button 
-            className="add-to-cart-btn"
+          <Button 
+            variant={product.stock > 0 ? "primary" : "secondary"}
+            size="medium"
             onClick={handleAddToCart}
             disabled={product.stock === 0}
+            className="add-to-cart-btn"
           >
             {product.stock > 0 ? 'Sepete Ekle' : 'Tükendi'}
-          </button>
+          </Button>
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import './CategoryFilter.css'
+import Button from './Button'
 
 const CategoryFilter = ({ categories, selectedCategory, onCategoryChange, onClearFilters }) => {
   return (
@@ -6,21 +7,28 @@ const CategoryFilter = ({ categories, selectedCategory, onCategoryChange, onClea
       <div className="category-header">
         <h3>Kategoriler</h3>
         {selectedCategory !== 'All' && (
-          <button className="clear-category-btn" onClick={onClearFilters}>
+          <Button 
+            variant="secondary" 
+            size="small"
+            onClick={onClearFilters}
+            className="clear-category-btn"
+          >
             Temizle
-          </button>
+          </Button>
         )}
       </div>
       
       <div className="category-buttons">
         {categories.map(category => (
-          <button
+          <Button
             key={category}
-            className={`category-btn ${selectedCategory === category ? 'active' : ''}`}
+            variant={selectedCategory === category ? "primary" : "outline-primary"}
+            size="small"
             onClick={() => onCategoryChange(category)}
+            className="category-btn"
           >
             {category === 'All' ? 'Tümü' : category}
-          </button>
+          </Button>
         ))}
       </div>
     </div>

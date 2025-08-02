@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { registerUser, clearError } from '../store/actions/userActions'
 import WelcomeCard from '../components/WelcomeCard'
+import Button from '../components/Button'
 import logo from '../assets/logo.png'
 import './SignUp.css'
 
@@ -200,13 +201,16 @@ const SignUp = () => {
             {formErrors.confirmPassword && <span className="field-error">{formErrors.confirmPassword}</span>}
           </div>
           
-          <button 
+          <Button 
             type="submit" 
-            className="signup-button"
+            variant="primary"
+            size="large"
+            loading={loading}
             disabled={loading}
+            className="signup-button"
           >
             {loading ? 'Kayıt olunuyor...' : 'Kayıt Ol'}
-          </button>
+          </Button>
         </form>
         
         <div className="signup-footer">

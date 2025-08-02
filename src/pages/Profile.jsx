@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../store/actions/userActions'
 import { useNavigate } from 'react-router-dom'
+import Button from '../components/Button'
 import './Profile.css'
 
 const Profile = () => {
@@ -145,22 +146,38 @@ const Profile = () => {
           <div className="profile-actions">
             {isEditing ? (
               <div className="edit-actions">
-                <button className="save-btn" onClick={handleSave}>
+                <Button 
+                  variant="primary" 
+                  onClick={handleSave}
+                  className="save-btn"
+                >
                   Kaydet
-                </button>
-                <button className="cancel-btn" onClick={handleEditToggle}>
+                </Button>
+                <Button 
+                  variant="secondary" 
+                  onClick={handleEditToggle}
+                  className="cancel-btn"
+                >
                   İptal
-                </button>
+                </Button>
               </div>
             ) : (
-              <button className="edit-btn" onClick={handleEditToggle}>
+              <Button 
+                variant="primary" 
+                onClick={handleEditToggle}
+                className="edit-btn"
+              >
                 Profili Düzenle
-              </button>
+              </Button>
             )}
             
-            <button className="logout-btn" onClick={handleLogout}>
+            <Button 
+              variant="danger" 
+              onClick={handleLogout}
+              className="logout-btn"
+            >
               Çıkış Yap
-            </button>
+            </Button>
           </div>
         </div>
       </div>

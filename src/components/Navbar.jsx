@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { logout } from '../store/actions/userActions'
+import Button from './Button'
 import logo from '../assets/logo.png'
 import './Navbar.css'
 import { FaMoon, FaSun } from 'react-icons/fa'
@@ -59,10 +60,13 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                     `Merhaba, ${user?.firstName}`
                   }
                 </span>
-                <button className="btn-logout" onClick={handleLogout}>Çıkış</button>
-                {/* <button className="logout-btn" onClick={handleLogout}>
+                <Button 
+                  variant="logout" 
+                  size="small"
+                  onClick={handleLogout}
+                >
                   Çıkış
-                </button> */}
+                </Button>
               </div>
             </>
           ) : (
@@ -81,11 +85,15 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
               </Link>
             </div>
           )}
-          <button className="theme-toggle" onClick={toggleDarkMode}>
+          <Button 
+            variant="theme" 
+            onClick={toggleDarkMode}
+            className="theme-toggle"
+          >
             {isDarkMode ? 
             <AiOutlineSun></AiOutlineSun>
             : <FaMoon></FaMoon>}
-          </button>
+          </Button>
         </div>
       </div>
     </nav>
