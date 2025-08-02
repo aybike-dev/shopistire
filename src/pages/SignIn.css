@@ -165,8 +165,6 @@
 
 .signin-button:hover:not(:disabled) {
     background: var(--btn-primary-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(235, 77, 66, 0.3);
 }
 
 .signin-button:disabled {
