@@ -3,8 +3,26 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    min-height: calc(100vh - 70px);
+    min-height: calc(100vh - 130px);
+    /* Navbar (70px) + CategoryBar (60px) */
     background-color: var(--bg-secondary);
+}
+
+@media (max-width: 768px) {
+    .home-container {
+        padding-top: 85px;
+        /* Account for mobile search bar */
+        min-height: calc(100vh - 205px);
+        /* Navbar + search bar + CategoryBar height */
+    }
+
+    /* When mobile search is open, add more top padding */
+    .home-container.search-open {
+        padding-top: 155px;
+        /* Account for mobile search bar being open */
+        min-height: calc(100vh - 275px);
+        /* Navbar + open search + CategoryBar height */
+    }
 }
 
 .home-header {
@@ -180,8 +198,7 @@
 
 .filters-section {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    justify-content: center;
     margin-bottom: 30px;
     background: var(--bg-primary);
     padding: 25px;

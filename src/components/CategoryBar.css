@@ -1,0 +1,121 @@
+.category-bar {
+    width: 100%;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 60px;
+    /* Updated to match navbar height */
+    z-index: 997;
+    /* Lower than navbar (1000) and mobile search (998) but still visible */
+    transition: top 0.3s ease;
+}
+
+/* When mobile search is open, move CategoryBar down */
+.category-bar.search-open {
+    top: 125px;
+    /* 60px navbar + ~65px mobile search */
+}
+
+.category-bar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.category-list {
+    display: flex;
+    gap: 8px;
+    padding: 12px 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE/Edge */
+}
+
+.category-list::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+}
+
+.category-item {
+    white-space: nowrap;
+    flex-shrink: 0;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.category-item.btn--primary {
+    background: var(--btn-primary);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(39, 112, 167, 0.3);
+}
+
+.category-item.btn--ghost {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid transparent;
+}
+
+.category-item.btn--ghost:hover {
+    background: var(--bg-secondary);
+    color: var(--btn-primary);
+    border-color: var(--btn-primary);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .category-bar {
+        top: 60px;
+        /* Account for shorter mobile navbar */
+        position: sticky;
+        display: block;
+        visibility: visible;
+        opacity: 1;
+        transition: top 0.3s ease;
+    }
+
+    /* When mobile search is open, adjust position */
+    .category-bar.search-open {
+        top: 130px;
+        /* Navbar (60px) + Mobile search (70px) */
+    }
+
+    .category-bar-container {
+        padding: 0 15px;
+    }
+
+    .category-list {
+        gap: 6px;
+        padding: 10px 0;
+        display: flex;
+        overflow-x: auto;
+    }
+
+    .category-item {
+        padding: 6px 12px;
+        font-size: 14px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-bar-container {
+        padding: 0 10px;
+    }
+
+    .category-list {
+        gap: 4px;
+        padding: 8px 0;
+    }
+
+    .category-item {
+        padding: 5px 10px;
+        font-size: 13px;
+    }
+}

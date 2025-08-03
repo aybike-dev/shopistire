@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
+import CategoryBar from './components/CategoryBar'
 import Footer from './components/Footer'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
@@ -14,6 +15,7 @@ import './App.css'
 function App() {
   const { isAuthenticated } = useSelector(state => state.auth)
   const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
 
   useEffect(() => {
     // Load theme from localStorage
@@ -39,7 +41,13 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+      <Navbar 
+        isDarkMode={isDarkMode} 
+        toggleDarkMode={toggleDarkMode}
+        isSearchOpen={isSearchOpen}
+        setIsSearchOpen={setIsSearchOpen}
+      />
+      <CategoryBar isSearchOpen={isSearchOpen} />
       <main className="main-content">
         <Routes>
           <Route 

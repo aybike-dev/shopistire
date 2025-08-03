@@ -44,7 +44,7 @@ const ProductCard = ({ product }) => {
             <div className="seller-details">
               <span className="seller-name">🏪 {seller.name}</span>
               <span className="seller-rating">
-                ⭐ {seller.rating}
+                ★ {seller.rating}
               </span>
             </div>
           </div>

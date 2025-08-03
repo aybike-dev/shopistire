@@ -35,7 +35,7 @@ const Footer = () => {
 
           {/* Hızlı Linkler */}
           <div className="footer-section">
-            <h4>Hızlı Linkler</h4>
+            <h4>Shopistire</h4>
             <ul className="footer-links">
               <li><a href="/">Ana Sayfa</a></li>
               <li><a href="/products">Ürünler</a></li>

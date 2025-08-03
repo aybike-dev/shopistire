@@ -1,10 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { filterByCategory, searchProducts, clearFilters, fetchProducts } from '../store/actions/productActions'
-import { productCategories } from '../mockData/products'
+import { clearFilters, fetchProducts } from '../store/actions/productActions'
 import ProductCard from '../components/ProductCard'
-import SearchBar from '../components/SearchBar'
-import CategoryFilter from '../components/CategoryFilter'
 import Button from '../components/Button'
 import './Home.css'
 
@@ -13,20 +10,9 @@ const Home = () => {
   const { filteredProducts, loading, selectedCategory, searchQuery } = useSelector(state => state.products)
   const { user, userType } = useSelector(state => state.auth)
   
-  // Get categories from mock data
-  const categories = productCategories
-  
   useEffect(() => {
     dispatch(fetchProducts())
   }, [dispatch])
-  
-  const handleCategoryChange = (category) => {
-    dispatch(filterByCategory(category))
-  }
-  
-  const handleSearch = (query) => {
-    dispatch(searchProducts(query))
-  }
   
   const handleClearFilters = () => {
     dispatch(clearFilters())
@@ -103,19 +89,9 @@ const Home = () => {
         </div>
       </div>
       
-      <div className="filters-section">
-        <SearchBar onSearch={handleSearch} searchQuery={searchQuery} />
-        <CategoryFilter 
-          categories={categories}
-          selectedCategory={selectedCategory}
-          onCategoryChange={handleCategoryChange}
-          onClearFilters={handleClearFilters}
-        />
-      </div>
-      
       <div className="products-section">
         <div className="products-header">
-          <h2>Ürünler ({filteredProducts.length})</h2>
+          {/* <h2>Ürünler ({filteredProducts.length})</h2> */}
           {(selectedCategory !== 'All' || searchQuery) && (
             <Button 
               variant="secondary" 
