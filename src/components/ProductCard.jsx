@@ -1,13 +1,37 @@
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import './ProductCard.css'
-import Button from './Button'
-import { mockSellers } from '../mockData/sellers'
+import Button from './Button/index.js'
+import { mockSellers } from '../mockData/sellers.js'
+import { addItemToCart } from '../store/slices/cartSlice.js'
 
 const ProductCard = ({ product }) => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { isAuthenticated, user } = useSelector(state => state.auth)
   const seller = mockSellers.find(s => s.id === product.sellerId)
   
   const handleAddToCart = () => {
-    // In a real app, this would dispatch an action to add to cart
-    alert(`${product.name} sepete eklendi! (Demo amaçlı)`)
+    if (!isAuthenticated) {
+      // Redirect to sign in if not authenticated
+      navigate('/signin')
+      return
+    }
+    
+    // Add product to cart
+    dispatch(addItemToCart({
+      userId: user.id,
+      product: {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        category: product.category
+      }
+    }))
+    
+    // Show success message (you could replace this with a toast notification)
+    alert(`${product.name} sepete eklendi!`)
   }
   
   return (

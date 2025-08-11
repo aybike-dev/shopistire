@@ -8,6 +8,8 @@ import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
+import Cart from './pages/Cart'
+import Checkout from './pages/Checkout'
 import SellerDashboard from './pages/SellerDashboard'
 import ProtectedRoute from './components/ProtectedRoute'
 import './App.css'
@@ -73,6 +75,14 @@ function App() {
                 <Profile />
               </ProtectedRoute>
             }
+          />
+          <Route
+            path="/cart"
+            element={<Cart />}
+          />
+          <Route
+            path="/checkout"
+            element={<Checkout />}
           />
           <Route
             path="/seller"

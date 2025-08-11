@@ -2,6 +2,14 @@
 export { mockUsers } from "./users";
 export { mockProducts, productCategories } from "./products";
 export { mockSellers } from "./sellers";
+export {
+  cartData,
+  getCartByUserId,
+  addToCart,
+  removeFromCart,
+  updateCartQuantity,
+  clearCart,
+} from "./cart";
 
 // You can also export combined data if needed
 export const mockData = {
@@ -9,4 +17,5 @@ export const mockData = {
   products: require("./products").mockProducts,
   categories: require("./products").productCategories,
   sellers: require("./sellers").mockSellers,
+  cart: require("./cart").cartData,
 };

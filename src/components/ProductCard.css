@@ -55,7 +55,7 @@
     margin: 0 0 8px 0;
     font-size: 18px;
     font-weight: 600;
-    color: #333;
+    color: var(--text-secondary);
     line-height: 1.3;
 }
 

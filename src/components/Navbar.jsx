@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
-import { logout } from '../store/actions/userActions'
-import { searchProducts } from '../store/actions/productActions'
-import Button from './Button'
+import { logout } from '../store/actions/userActions.js'
+import { searchProducts } from '../store/actions/productActions.js'
+import { loadUserCart } from '../store/slices/cartSlice.js'
+import Button from './Button/index.js'
 import logo from '../assets/logo.png'
 import './Navbar.css'
 import { FaMoon, FaSun, FaSearch, FaBars, FaTimes, FaShoppingCart, FaHeart } from 'react-icons/fa'
@@ -11,12 +12,23 @@ import { AiOutlineSun } from 'react-icons/ai'
 
 const Navbar = ({ isDarkMode, toggleDarkMode, isSearchOpen, setIsSearchOpen }) => {
   const { user, isAuthenticated, userType } = useSelector(state => state.auth)
+  const { items: cartItems } = useSelector(state => state.cart)
   const { searchQuery } = useSelector(state => state.products)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const location = useLocation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [searchInput, setSearchInput] = useState(searchQuery || '')
+
+  // Load user's cart when component mounts
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      dispatch(loadUserCart({ userId: user.id }))
+    }
+  }, [dispatch, isAuthenticated, user])
+
+  // Calculate total cart items
+  const cartItemCount = cartItems?.reduce((total, item) => total + item.quantity, 0) || 0
   
   const handleLogout = () => {
     dispatch(logout())
@@ -153,10 +165,15 @@ const Navbar = ({ isDarkMode, toggleDarkMode, isSearchOpen, setIsSearchOpen }) =
           <Button
             variant="ghost"
             className="cart-btn"
-            onClick={() => navigate('/signin')}
+            onClick={() => navigate('/cart')}
             aria-label="Sepetim"
           >
-            <FaShoppingCart />
+            <div className="cart-icon-wrapper">
+              <FaShoppingCart />
+              {cartItemCount > 0 && (
+                <span className="cart-badge">{cartItemCount}</span>
+              )}
+            </div>
           </Button>
 
           {/* Mobile Search Toggle Button */}
@@ -200,11 +217,15 @@ const Navbar = ({ isDarkMode, toggleDarkMode, isSearchOpen, setIsSearchOpen }) =
               <FaHeart /> Favoriler
             </Link>
             <Link 
-              to="/signin" 
-              className={`navbar-link ${location.pathname === '/signin' ? 'active' : ''}`}
+              to="/cart" 
+              className={`navbar-link ${location.pathname === '/cart' ? 'active' : ''}`}
               onClick={closeMenu}
             >
-              <FaShoppingCart /> Sepetim
+              <FaShoppingCart /> 
+              <span>Sepetim</span>
+              {cartItemCount > 0 && (
+                <span className="menu-cart-badge">{cartItemCount}</span>
+              )}
             </Link>
           </div>
           
