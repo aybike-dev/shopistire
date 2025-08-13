@@ -15,6 +15,7 @@ const ProductCard = ({ product }) => {
     if (!isAuthenticated) {
       // Redirect to sign in if not authenticated
       navigate('/signin')
+      window.scrollTo(0, 0)
       return
     }
     
