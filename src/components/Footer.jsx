@@ -38,10 +38,10 @@ const Footer = () => {
             <h4>Shopistire</h4>
             <ul className="footer-links">
               <li><a href="/">Ana Sayfa</a></li>
-              <li><a href="/products">Ürünler</a></li>
-              <li><a href="/categories">Kategoriler</a></li>
-              <li><a href="/offers">Kampanyalar</a></li>
-              <li><a href="/contact">İletişim</a></li>
+              <li><a href="/">Ürünler</a></li>
+              <li><a href="/">Kategoriler</a></li>
+              <li><a href="/">Kampanyalar</a></li>
+              <li><a href="/">İletişim</a></li>
             </ul>
           </div>
 
@@ -49,11 +49,11 @@ const Footer = () => {
           <div className="footer-section">
             <h4>Müşteri Hizmetleri</h4>
             <ul className="footer-links">
-              <li><a href="/help">Yardım Merkezi</a></li>
-              <li><a href="/shipping">Kargo Bilgileri</a></li>
-              <li><a href="/returns">İade & Değişim</a></li>
-              <li><a href="/warranty">Garanti Koşulları</a></li>
-              <li><a href="/faq">Sık Sorulan Sorular</a></li>
+              <li><a href="/">Yardım Merkezi</a></li>
+              <li><a href="/">Kargo Bilgileri</a></li>
+              <li><a href="/">İade & Değişim</a></li>
+              <li><a href="/">Garanti Koşulları</a></li>
+              <li><a href="/">Sık Sorulan Sorular</a></li>
             </ul>
           </div>
 
@@ -88,9 +88,9 @@ const Footer = () => {
               <p>&copy; 2025 Shopistire. Tüm hakları saklıdır.</p>
             </div>
             <div className="footer-legal">
-              <a href="/privacy">Gizlilik Politikası</a>
-              <a href="/terms">Kullanım Koşulları</a>
-              <a href="/cookies">Çerez Politikası</a>
+              <a href="/">Gizlilik Politikası</a>
+              <a href="/">Kullanım Koşulları</a>
+              <a href="/">Çerez Politikası</a>
             </div>
           </div>
         </div>
