@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa'
 import './Footer.css'
+import logo from '../assets/logo.png'
 
 const Footer = () => {
   return (
@@ -10,7 +11,7 @@ const Footer = () => {
           {/* Logo ve Açıklama */}
           <div className="footer-section">
             <div className="footer-logo">
-              <img src="/src/assets/logo.png" alt="Shopistire" className="footer-logo-img" />
+              <img src={logo} alt="Shopistire" className="footer-logo-img" />
               <h3>Shopistire</h3>
             </div>
             <p className="footer-description">
