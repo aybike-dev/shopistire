@@ -1,12 +1,13 @@
 import React from 'react'
 import './WelcomeCard.css'
+import logo from '../assets/logo.png'
 
 const WelcomeCard = ({ isSignUp = false }) => {
   return (
     <div className="welcome-card">
       <div className="welcome-content">
         <div className="welcome-header">
-          <img src="/src/assets/logo.png" alt="Shopistire" className="welcome-logo" />
+          <img src={logo} alt="Shopistire" className="welcome-logo" />
           <h1 className="welcome-title">Shopistire</h1>
         </div>
         
